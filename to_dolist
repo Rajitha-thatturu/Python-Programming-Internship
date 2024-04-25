@@ -1,11 +1,15 @@
+# Define a class to represent a to-do list
 class ToDoList:
+    # Initialize the ToDoList with an empty list of tasks
     def __init__(self):
         self.tasks = []
 
+    # Add a task to the list
     def add_task(self, task):
         self.tasks.append(task)
         print(f"Task '{task}' added successfully!")
 
+    # Delete a task from the list if it exists
     def delete_task(self, task):
         if task in self.tasks:
             self.tasks.remove(task)
@@ -13,20 +17,25 @@ class ToDoList:
         else:
             print(f"Task '{task}' not found.")
 
+    # Mark a task as completed if it exists
     def mark_completed(self, task):
         if task in self.tasks:
             print(f"Task '{task}' marked as completed!")
         else:
             print(f"Task '{task}' not found.")
 
+    # Display all the tasks in the list
     def display_tasks(self):
         print("\nCurrent tasks:")
         for i, task in enumerate(self.tasks, start=1):
             print(f"{i}. {task}")
 
+# Define the main function that will run the to-do list application
 def main():
+    # Create an instance of the ToDoList class
     todo = ToDoList()
 
+    # Loop to display the menu and process user input
     while True:
         print("\nMenu:")
         print("1. Add Task")
@@ -35,8 +44,10 @@ def main():
         print("4. Display Tasks")
         print("5. Exit")
 
+        # Get the user's choice
         choice = input("Enter your choice (1/2/3/4/5): ")
 
+        # Process the user's choice and call the appropriate method
         if choice == '1':
             task = input("Enter the task: ")
             todo.add_task(task)
@@ -49,10 +60,14 @@ def main():
         elif choice == '4':
             todo.display_tasks()
         elif choice == '5':
+            # Exit the application
             print("Exiting the application. Have a great day!")
             break
         else:
+            # Handle invalid choices
             print("Invalid choice. Please select a valid option.")
 
+# Check if the script is being run directly and not imported
 if __name__ == "__main__":
+    # If the script is run directly, call the main function to start the application
     main()
