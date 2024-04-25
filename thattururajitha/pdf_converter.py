@@ -9,12 +9,12 @@ def convert_pdf_to_text(pdf_path, text_path):
     :param text_path: Path to save the output text file
     """
     try:
-        doc = fitz.open(pdf_path)
+        doc = fitz.open(pdf_path)  # Open the PDF document
         text = ""
         for page in doc:
-            text += page.get_text("text")
+            text += page.get_text("text")  # Extract text from each page
         with open(text_path, "w", encoding="utf-8") as txt_file:
-            txt_file.write(text)
+            txt_file.write(text)  # Save extracted text to a text file
         print(f"Text extracted and saved to {text_path}")
     except Exception as e:
         print(f"Error converting PDF to text: {e}")
@@ -26,13 +26,13 @@ def convert_pdf_to_images(pdf_path, images_folder):
     :param images_folder: Folder to save the output images
     """
     try:
-        doc = fitz.open(pdf_path)
-        os.makedirs(images_folder, exist_ok=True)
+        doc = fitz.open(pdf_path)  # Open the PDF document
+        os.makedirs(images_folder, exist_ok=True)  # Create the output folder if it doesn't exist
         for page_num, page in enumerate(doc):
             image_path = os.path.join(images_folder, f"page_{page_num + 1}.png")
             pix = page.get_pixmap(matrix=fitz.Matrix(2, 2))  # Increase resolution for better quality
             img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
-            img.save(image_path, format="PNG")
+            img.save(image_path, format="PNG")  # Save each page as a PNG image
         print(f"Images saved to {images_folder}")
     except Exception as e:
         print(f"Error converting PDF to images: {e}")
