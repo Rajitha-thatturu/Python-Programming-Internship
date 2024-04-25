@@ -1,35 +1,48 @@
+# Define a function to add two numbers
 def add(x, y):
     """Function to add two numbers"""
     return x + y
 
+# Define a function to subtract two numbers
 def subtract(x, y):
     """Function to subtract two numbers"""
     return x - y
 
+# Define a function to multiply two numbers
 def multiply(x, y):
     """Function to multiply two numbers"""
     return x * y
 
+# Define a function to divide two numbers
 def divide(x, y):
     """Function to divide two numbers"""
+    # Check if the second number is not zero to avoid division by zero error
     if y != 0:
         return x / y
     else:
+        # Return an error message if the second number is zero
         return "Error: Cannot divide by zero"
 
+# Define the main function that serves as the entry point of the program
 def main():
+    # Display the title of the program
     print("Simple Calculator")
+    # Display the available mathematical operations
     print("Available operations:")
     print("1. Add")
     print("2. Subtract")
     print("3. Multiply")
     print("4. Divide")
 
+    # Prompt the user to select an operation
     choice = input("Enter your choice (1/2/3/4): ")
 
+    # Prompt the user to enter the first number
     num1 = float(input("Enter the first number: "))
+    # Prompt the user to enter the second number
     num2 = float(input("Enter the second number: "))
 
+    # Perform the selected operation and display the result
     if choice == '1':
         print(f"Result: {num1} + {num2} = {add(num1, num2)}")
     elif choice == '2':
@@ -39,7 +52,10 @@ def main():
     elif choice == '4':
         print(f"Result: {num1} / {num2} = {divide(num1, num2)}")
     else:
+        # Inform the user if an invalid choice was made
         print("Invalid choice. Please select a valid operation (1/2/3/4).")
 
+# Check if the script is being run directly and not imported
 if __name__ == "__main__":
+    # If the script is run directly, call the main function to start the calculator
     main()
